@@ -57,5 +57,5 @@ const CONTENT = {
   ],
 
   // The message revealed by the button at the bottom
-  surprise: "I love you more than words (or websites) can say. 💗",
+  surprise: "Kocham Cię bardzo, Mamo. 💗",
 };
