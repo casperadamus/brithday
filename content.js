@@ -6,54 +6,54 @@
 */
 
 const CONTENT = {
-  // Shown in the big heading: "Happy Birthday, ___"
-  momName: "Mom",
+  // Shown in the big heading ("Wszystkiego najlepszego, ___") and the letter ("Kochana ___,")
+  momName: "Mamo",
 
   // Your name, used to sign the letter
   fromName: "Casper",
 
   // Small line under the heading
-  tagline: "To the woman who made every day of my life a little softer.",
+  tagline: "Dla kobiety, która sprawia, że każdy mój dzień jest odrobinę piękniejszy.",
 
   // The letter. Each item is one paragraph.
   letter: [
-    "Happy birthday to the most patient, warm, and quietly incredible person I know.",
-    "Thank you for every early morning, every late night, every hug when I needed one and every word of advice I pretended not to hear (but always did).",
-    "I hope this year gives back even a fraction of the love you give everyone around you. You deserve all of it, and more.",
+    "Wszystkiego najlepszego dla najcierpliwszej, najcieplejszej i po cichu niesamowitej osoby, jaką znam.",
+    "Dziękuję Ci za każdy wczesny poranek, każdą późną noc, każdy przytulas wtedy, gdy był mi potrzebny, i każdą radę – nawet tę, której niby nie słucham (a jednak zawsze słucham).",
+    "Mam nadzieję, że ten rok odda Ci choć odrobinę miłości, którą dajesz wszystkim wokół. Zasługujesz na nią całą – i na jeszcze więcej.",
   ],
 
   // Your photos together. "caption" is optional.
   // "focus" is optional: which part of the photo stays in the frame
   // ("left right%  top bottom%"), handy for wide or very tall photos.
   photos: [
-    { src: "photos/1.jpg", caption: "day one" },
-    { src: "photos/2.jpg", caption: "corn maze hugs", focus: "50% 30%" },
-    { src: "photos/3.jpg", caption: "first beach days", focus: "10% 50%" },
-    { src: "photos/4.jpg", caption: "christmas cuddles" },
-    { src: "photos/5.jpg", caption: "little hikers", focus: "50% 80%" },
-    { src: "photos/6.jpg", caption: "windy shore walks", focus: "50% 60%" },
-    { src: "photos/7.jpg", caption: "we crossed the finish line", focus: "50% 40%" },
-    { src: "photos/8.jpg", caption: "very serious photoshoot", focus: "35% 50%" },
-    { src: "photos/9.jpg", caption: "christmas best" },
-    { src: "photos/10.jpg", caption: "jungle adventure", focus: "50% 30%" },
-    { src: "photos/11.jpg", caption: "summer afternoons", focus: "50% 30%" },
-    { src: "photos/12.jpg", caption: "cheek to cheek", focus: "62% 50%" },
-    { src: "photos/13.jpg", caption: "golden hour", focus: "55% 50%" },
-    { src: "photos/14.jpg", caption: "sunset walks", focus: "61% 50%" },
-    { src: "photos/15.jpg", caption: "beach days", focus: "50% 10%" },
-    { src: "photos/16.jpg", caption: "island time" },
-    { src: "photos/17.jpg", caption: "three generations", focus: "75% 50%" },
-    { src: "photos/18.jpg", caption: "road trip crew" },
+    { src: "photos/1.jpg", caption: "dzień pierwszy" },
+    { src: "photos/2.jpg", caption: "przytulasy w kukurydzy", focus: "50% 30%" },
+    { src: "photos/3.jpg", caption: "pierwsze dni na plaży", focus: "10% 50%" },
+    { src: "photos/4.jpg", caption: "świąteczne przytulanie" },
+    { src: "photos/5.jpg", caption: "mali wędrowcy", focus: "50% 80%" },
+    { src: "photos/6.jpg", caption: "wietrzne spacery brzegiem", focus: "50% 60%" },
+    { src: "photos/7.jpg", caption: "na mecie!", focus: "50% 40%" },
+    { src: "photos/8.jpg", caption: "bardzo poważna sesja zdjęciowa", focus: "35% 50%" },
+    { src: "photos/9.jpg", caption: "świątecznie i elegancko" },
+    { src: "photos/10.jpg", caption: "przygoda w dżungli", focus: "50% 30%" },
+    { src: "photos/11.jpg", caption: "letnie popołudnia", focus: "50% 30%" },
+    { src: "photos/12.jpg", caption: "policzek przy policzku", focus: "62% 50%" },
+    { src: "photos/13.jpg", caption: "złota godzina", focus: "55% 50%" },
+    { src: "photos/14.jpg", caption: "spacery o zachodzie słońca", focus: "61% 50%" },
+    { src: "photos/15.jpg", caption: "dni na plaży", focus: "50% 10%" },
+    { src: "photos/16.jpg", caption: "wyspiarski czas" },
+    { src: "photos/17.jpg", caption: "trzy pokolenia", focus: "75% 50%" },
+    { src: "photos/18.jpg", caption: "ekipa w trasie" },
   ],
 
   // "Things I love about you"
   reasons: [
-    { title: "Your laugh", text: "It fills the whole room, and somehow fixes everything." },
-    { title: "Your kindness", text: "You treat everyone like they matter, because to you they do." },
-    { title: "Your strength", text: "You carry so much and still make it look gentle." },
-    { title: "Your hugs", text: "Still the safest place in the world." },
-    { title: "Your advice", text: "Annoyingly, always right." },
-    { title: "You", text: "Just all of you. I'm so lucky you're my mom." },
+    { title: "Twój śmiech", text: "Wypełnia cały pokój i jakimś cudem naprawia wszystko." },
+    { title: "Twoja dobroć", text: "Każdego traktujesz tak, jakby był ważny, bo dla Ciebie naprawdę jest." },
+    { title: "Twoja siła", text: "Dźwigasz tak wiele, a mimo to robisz to z taką łagodnością." },
+    { title: "Twoje przytulasy", text: "Wciąż najbezpieczniejsze miejsce na świecie." },
+    { title: "Twoje rady", text: "Irytująco zawsze trafne." },
+    { title: "Ty", text: "Po prostu cała Ty. Mam ogromne szczęście, że jesteś moją mamą." },
   ],
 
   // The message revealed by the button at the bottom

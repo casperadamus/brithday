@@ -3,7 +3,7 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // ---------- fill in text from content.js ----------
-  document.title = `Happy Birthday, ${CONTENT.momName}`;
+  document.title = `Wszystkiego najlepszego, ${CONTENT.momName}`;
   document.querySelectorAll("[data-bind]").forEach((el) => {
     el.textContent = CONTENT[el.dataset.bind] ?? "";
   });
@@ -29,11 +29,11 @@
     frame.className = "frame";
     const img = document.createElement("img");
     img.src = photo.src;
-    img.alt = photo.caption || "A photo of us";
+    img.alt = photo.caption || "Nasze zdjęcie";
     img.loading = "lazy";
     if (photo.focus) img.style.objectPosition = photo.focus;
     img.onerror = () => {
-      frame.innerHTML = '<span class="placeholder">photo coming soon</span>';
+      frame.innerHTML = '<span class="placeholder">zdjęcie wkrótce</span>';
       card.dataset.missing = "true";
     };
     frame.appendChild(img);
@@ -185,7 +185,7 @@
 
   $(".gift").addEventListener("click", (e) => {
     $(".surprise").classList.add("show");
-    e.currentTarget.textContent = "Again!";
+    e.currentTarget.textContent = "Jeszcze raz!";
     if (!reduceMotion) burst();
   });
 })();
