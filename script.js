@@ -17,7 +17,7 @@
 
   // ---------- gallery ----------
   const gallery = $(".gallery");
-  const tilts = [-2.2, 1.6, -1, 2.4, -1.8, 1.2];
+  const tilts = [-2.2, 1.6, -1, 2.4, -1.8, 1.2, -1.4, 2, -0.8];
   CONTENT.photos.forEach((photo, i) => {
     const card = document.createElement("button");
     card.type = "button";
@@ -31,6 +31,7 @@
     img.src = photo.src;
     img.alt = photo.caption || "A photo of us";
     img.loading = "lazy";
+    if (photo.focus) img.style.objectPosition = photo.focus;
     img.onerror = () => {
       frame.innerHTML = '<span class="placeholder">photo coming soon</span>';
       card.dataset.missing = "true";

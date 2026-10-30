@@ -23,13 +23,18 @@ const CONTENT = {
   ],
 
   // Your photos together. "caption" is optional.
+  // "focus" is optional: which part of the photo stays in the frame
+  // ("left right%  top bottom%"), handy for wide or very tall photos.
   photos: [
-    { src: "photos/1.jpg", caption: "us, always" },
-    { src: "photos/2.jpg", caption: "my favorite day" },
-    { src: "photos/3.jpg", caption: "sunday mornings" },
-    { src: "photos/4.jpg", caption: "that trip" },
-    { src: "photos/5.jpg", caption: "laughing at nothing" },
-    { src: "photos/6.jpg", caption: "little me & you" },
+    { src: "photos/1.jpg", caption: "day one" },
+    { src: "photos/2.jpg", caption: "corn maze hugs", focus: "50% 30%" },
+    { src: "photos/3.jpg", caption: "very serious photoshoot", focus: "35% 50%" },
+    { src: "photos/4.jpg", caption: "golden hour", focus: "55% 50%" },
+    { src: "photos/5.jpg", caption: "sunset walks", focus: "61% 50%" },
+    { src: "photos/6.jpg", caption: "beach days", focus: "50% 10%" },
+    { src: "photos/7.jpg", caption: "island time" },
+    { src: "photos/8.jpg", caption: "three generations", focus: "75% 50%" },
+    { src: "photos/9.jpg", caption: "road trip crew" },
   ],
 
   // "Things I love about you"
