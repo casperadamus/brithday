@@ -25,6 +25,8 @@ const CONTENT = {
   // Your photos together. "caption" is optional.
   // "focus" is optional: which part of the photo stays in the frame
   // ("left right%  top bottom%"), handy for wide or very tall photos.
+  // "note" is optional: a short memory shown under the photo, e.g.
+  //   { src: "photos/2.jpg", caption: "...", note: "Pamiętasz, jak się zgubiliśmy?" },
   photos: [
     { src: "photos/1.jpg", caption: "dzień pierwszy" },
     { src: "photos/2.jpg", caption: "przytulasy w kukurydzy", focus: "50% 30%" },

@@ -15,41 +15,114 @@
     letterBody.appendChild(p);
   });
 
-  // ---------- gallery ----------
-  const gallery = $(".gallery");
+  const lightbox = $(".lightbox");
+
+  // ---------- photo story (one photo at a time) ----------
+  const slidesEl = $(".slides");
+  const note = $(".note");
+  const count = $(".story-count");
+  const bar = $(".story-bar span");
+  const prevBtn = $(".story-btn.prev");
+  const nextBtn = $(".story-btn.next");
+  const hint = $(".story-hint");
   const tilts = [-2.2, 1.6, -1, 2.4, -1.8, 1.2, -1.4, 2, -0.8];
-  CONTENT.photos.forEach((photo, i) => {
-    const card = document.createElement("button");
-    card.type = "button";
-    card.className = "polaroid reveal";
-    card.style.setProperty("--tilt", `${tilts[i % tilts.length]}deg`);
-    card.style.transitionDelay = `${(i % 3) * 0.12}s`;
+
+  const slides = CONTENT.photos.map((photo, i) => {
+    const slide = document.createElement("figure");
+    slide.className = "slide polaroid";
+    slide.style.setProperty("--tilt", `${tilts[i % tilts.length]}deg`);
+    slide.setAttribute("aria-roledescription", "slide");
+    slide.setAttribute("aria-label", `${i + 1} z ${CONTENT.photos.length}`);
 
     const frame = document.createElement("div");
     frame.className = "frame";
     const img = document.createElement("img");
     img.src = photo.src;
     img.alt = photo.caption || "Nasze zdjęcie";
-    img.loading = "lazy";
+    img.draggable = false;
     if (photo.focus) img.style.objectPosition = photo.focus;
     img.onerror = () => {
       frame.innerHTML = '<span class="placeholder">zdjęcie wkrótce</span>';
-      card.dataset.missing = "true";
+      slide.dataset.missing = "true";
     };
     frame.appendChild(img);
 
     const caption = document.createElement("figcaption");
     caption.textContent = photo.caption || "";
 
-    card.append(frame, caption);
-    card.addEventListener("click", () => {
-      if (!card.dataset.missing) openLightbox(photo);
-    });
-    gallery.appendChild(card);
+    slide.append(frame, caption);
+    slidesEl.appendChild(slide);
+    return slide;
   });
 
+  let current = 0;
+  const last = slides.length - 1;
+
+  function show(index) {
+    current = Math.max(0, Math.min(last, index));
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === current);
+      slide.classList.toggle("before", i < current);
+      slide.classList.toggle("after", i > current);
+      slide.setAttribute("aria-hidden", i !== current);
+    });
+    note.classList.remove("show");
+    const text = CONTENT.photos[current].note || "";
+    setTimeout(() => {
+      note.textContent = text;
+      if (text) note.classList.add("show");
+    }, 250);
+    count.textContent = `${current + 1} / ${slides.length}`;
+    bar.style.width = `${((current + 1) / slides.length) * 100}%`;
+    prevBtn.disabled = current === 0;
+    const atEnd = current === last;
+    nextBtn.classList.toggle("finish", atEnd);
+    nextBtn.textContent = atEnd ? "dalej ↓" : "›";
+    nextBtn.setAttribute("aria-label", atEnd ? "Przejdź dalej" : "Następne zdjęcie");
+  }
+
+  function go(step) {
+    if (step > 0 && current === last) {
+      $("#reasons").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+      return;
+    }
+    show(current + step);
+    hint.classList.add("hide");
+  }
+
+  prevBtn.addEventListener("click", () => go(-1));
+  nextBtn.addEventListener("click", () => go(1));
+
+  // swipe to move, tap to see the whole photo
+  let start = null;
+  slidesEl.addEventListener("pointerdown", (e) => {
+    start = { x: e.clientX, y: e.clientY };
+  });
+  slidesEl.addEventListener("pointerup", (e) => {
+    if (!start) return;
+    const dx = e.clientX - start.x;
+    const dy = e.clientY - start.y;
+    start = null;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      go(dx < 0 ? 1 : -1);
+    } else if (Math.abs(dx) < 10 && Math.abs(dy) < 10 && !slides[current].dataset.missing) {
+      openLightbox(CONTENT.photos[current]);
+    }
+  });
+  slidesEl.addEventListener("pointercancel", () => (start = null));
+
+  // arrow keys work while the photos are on screen
+  let storyOnScreen = false;
+  new IntersectionObserver(([entry]) => (storyOnScreen = entry.isIntersecting), { threshold: 0.5 }).observe(slidesEl);
+  document.addEventListener("keydown", (e) => {
+    if (!storyOnScreen || !lightbox.hidden) return;
+    if (e.key === "ArrowRight") go(1);
+    if (e.key === "ArrowLeft") go(-1);
+  });
+
+  show(0);
+
   // ---------- lightbox ----------
-  const lightbox = $(".lightbox");
   function openLightbox(photo) {
     lightbox.querySelector("img").src = photo.src;
     lightbox.querySelector("img").alt = photo.caption || "";

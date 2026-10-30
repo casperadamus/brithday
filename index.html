@@ -42,10 +42,22 @@
         <p class="eyebrow">wspomnienia</p>
         <h2>Ty i ja</h2>
       </div>
-      <div class="gallery"></div>
+      <div class="story reveal">
+        <div class="slides" aria-roledescription="carousel" aria-label="Nasze zdjęcia"></div>
+        <p class="note" aria-live="polite"></p>
+        <div class="story-controls">
+          <button class="story-btn prev" type="button" aria-label="Poprzednie zdjęcie">‹</button>
+          <div class="story-progress">
+            <span class="story-count" aria-live="polite"></span>
+            <span class="story-bar"><span></span></span>
+          </div>
+          <button class="story-btn next" type="button" aria-label="Następne zdjęcie">›</button>
+        </div>
+        <p class="story-hint">przesuń palcem lub stuknij strzałkę</p>
+      </div>
     </section>
 
-    <section class="reasons-section">
+    <section id="reasons" class="reasons-section">
       <div class="section-head reveal">
         <p class="eyebrow">krótka lista</p>
         <h2>Za co Cię kocham</h2>
